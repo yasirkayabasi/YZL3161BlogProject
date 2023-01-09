@@ -1,0 +1,23 @@
+﻿@model Article
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit Article</h1>
+
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="Title">Title</label>
+        <input type="text" class="form-control" id="Title" name="Title" value="@Model.Title" />
+    </div>
+    <div class="form-group">
+        <label for="Content">Content</label>
+        <textarea class="form-control" id="Content" name="Content" rows="3">@Model.Content</textarea>
+    </div>
+    <div class="form-group">
+        <label for="ArticlePicture">Article Picture</label>
+        <input type="file" class="form-control-file" id="ArticlePicture" name="ArticlePicture" accept="image/*" />
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>

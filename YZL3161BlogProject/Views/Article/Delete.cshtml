@@ -1,0 +1,21 @@
+﻿@model Article
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete Article</h1>
+
+<p>Are you sure you want to delete this article?</p>
+
+<form method="post">
+    <div class="form-group">
+        <label>Title</label>
+        <input type="text" class="form-control" value="@Model.Title" readonly />
+    </div>
+    <div class="form-group">
+        <label>Content</label>
+        <textarea class="form-control" rows="3" readonly>@Model.Content</textarea>
+    </div>
+    <button type="submit" class="btn btn-danger">Delete</button>
+</form>

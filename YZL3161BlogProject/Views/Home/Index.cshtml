@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Article>
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<h1>Articles</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Created Time</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var article in Model)
+        {
+            <tr>
+                <td>@article.Title</td>
+                <td>@article.Author.Username</td>
+                <td>@article.CreatedTime.ToString("dd/MM/yyyy")</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@article.Id">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

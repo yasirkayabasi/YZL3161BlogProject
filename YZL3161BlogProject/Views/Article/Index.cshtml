@@ -1,0 +1,38 @@
+﻿@model List<Article>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Created Time</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Article article in Model)
+        {
+            <tr>
+                <td>@article.Title</td>
+                <td>@article.Author.Username</td>
+                <td>@article.CreatedTime</td>
+                <td>
+                    <a class="btn btn-primary" href="@Url.Action("Details", "Home", new { id = article.Id })">Details</a>
+                    @if (article.Author.Id == int.Parse(Context.Session.GetString("userId")))
+                    {
+                        <a class="btn btn-secondary" href="@Url.Action("Edit", "Article", new { id = article.Id })">Edit</a>
+                        <form method="post" action="@Url.Action("Delete", "Article")">
+                            <input type="hidden" name="id" value="@article.Id" />
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (Context.Session.GetString("userId") != null)
+{
+    <a class="btn btn-success" href="@Url.Action("Create", "Article")">Create New</a>
+}
